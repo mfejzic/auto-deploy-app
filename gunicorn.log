@@ -1,0 +1,8 @@
+[2026-03-03 19:25:47 +0000] [30392] [INFO] Starting gunicorn 23.0.0
+[2026-03-03 19:25:47 +0000] [30392] [INFO] Listening at: http://0.0.0.0:8000 (30392)
+[2026-03-03 19:25:47 +0000] [30392] [INFO] Using worker: sync
+[2026-03-03 19:25:47 +0000] [30395] [INFO] Booting worker with pid: 30395
+[2026-03-03 19:26:44 +0000] [30392] [INFO] Handling signal: term
+[2026-03-03 19:26:44 +0000] [30395] [INFO] Worker exiting (pid: 30395)
+[2026-03-03 19:26:44 +0000] [30392] [ERROR] Worker (pid:30395) was sent SIGTERM!
+[2026-03-03 19:26:44 +0000] [30392] [INFO] Shutting down: Master
