@@ -1,5 +1,6 @@
 name: Deploy to EC2
 
+# Trigger on push to main branch
 on:
   push:
     branches:
@@ -10,18 +11,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout your repo code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      # 2️⃣ Deploy via SSH to EC2
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ec2-user/auto-deploy-app
-            git pull origin main
+            # Go to app directory
+            cd auto-deploy-app
+
+            # Pull latest code from GitHub
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Kill old Gunicorn processes
             pkill gunicorn || true
+
+            # Activate virtual environment
             source venv/bin/activate
+
+            # Start Gunicorn in background and log output
             nohup gunicorn app:app --bind 0.0.0.0:8000 > deploy.log 2>&1 &
+            
+            # Optional: print deployed version
+            echo "Deployed successfully"
