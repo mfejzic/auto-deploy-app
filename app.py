@@ -8,7 +8,7 @@ VERSION = os.getenv("APP_VERSION", "1.0")
 
 @app.route("/")
 def home():
-    return "version 6 deployed"
+    return "version 7 deployed"
     return "version 2 deployed"
 
 @app.route("/health")
