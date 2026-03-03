@@ -82,9 +82,9 @@ chmod +x deploy.sh
 
 ### --- after you change the app.py and push to github, run deploy.sh on ec2--- ###
 #- this will pull the latest code and restart the app with new changes
-git add .
-git commit -m "Test auto deploy"
-git push origin main
+git add .    # this adds all changes to staging
+git commit -m "Test auto deploy"     # this commits the changes with a message
+git push origin main    # this pushes the changes to GitHub
 #- ec2
 bash deploy.sh
 
@@ -99,3 +99,14 @@ Host github.com
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_rsa_github
+
+
+# !!! COMMIT CHANGES TO GITHUB FROM LOCAL TERMINAL !!! #
+
+### --- after you change the app.py and push to github, run deploy.sh on ec2--- ###
+#- this will pull the latest code and restart the app with new changes
+git add .    # this adds all changes to staging
+git commit -m "Test auto deploy"     # this commits the changes with a message
+git push origin main    # this pushes the changes to GitHub
+#- ec2
+bash deploy.sh
