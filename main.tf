@@ -8,13 +8,13 @@ resource "aws_vpc" "main" {
 }
 
 // test resource 
-resource "aws_vpc" "test" {
-  cidr_block = "10.4.0.0/16"
+# resource "aws_vpc" "test" {
+#   cidr_block = "10.4.0.0/16"
 
-  tags = {
-    Name = "basic-vpc"
-  }
-}
+#   tags = {
+#     Name = "basic-vpc"
+#   }
+# }
 
 # Public subnet
 resource "aws_subnet" "public" {
